@@ -1,0 +1,18 @@
+<h1>Products</h1>
+<form method="post" action="/admin/products">
+  <input name="name" placeholder="Name" />
+  <input name="price" placeholder="Price" />
+  <textarea name="description"></textarea>
+  <select name="category">
+    <% categories.forEach(cat => { %>
+      <option value="<%= cat._id %>"><%= cat.name %></option>
+    <% }) %>
+  </select>
+  <button type="submit">Add Product</button>
+</form>
+
+<ul>
+  <% products.forEach(p => { %>
+    <li><%= p.name %> - <%= p.price %></li>
+  <% }) %>
+</ul>

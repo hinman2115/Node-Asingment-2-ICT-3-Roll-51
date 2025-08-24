@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <% include ../partials/head %>
+</head>
+<body>
+<% include ../partials/nav %>
+<main>
+  <h2>Edit Employee: <%= employee.empId %></h2>
+  <% if (errors) { %><p class="error"><%= errors %></p><% } %>
+  <form action="/employees/<%= employee._id %>?_method=PUT" method="POST">
+    <div class="row"><label>Name</label><input name="name" value="<%= employee.name %>" required /></div>
+    <div class="row"><label>Email</label><input name="email" type="email" value="<%= employee.email %>" required /></div>
+    <div class="row"><label>Phone</label><input name="phone" value="<%= employee.phone || '' %>" /></div>
+    <div class="row"><label>Department</label><input name="department" value="<%= employee.department || '' %>" /></div>
+    <div class="row"><label>Basic</label><input name="basic" type="number" min="0" step="1" required value="<%= employee.basic %>" /></div>
+    <div class="row"><label>HRA %</label><input name="hraPercent" type="number" min="0" step="1" value="<%= employee.hraPercent %>" /></div>
+    <div class="row"><label>DA %</label><input name="daPercent" type="number" min="0" step="1" value="<%= employee.daPercent %>" /></div>
+    <div class="row"><label>Deductions</label><input name="deductions" type="number" min="0" step="1" value="<%= employee.deductions %>" /></div>
+    <button type="submit">Update</button>
+  </form>
+</main>
+</body>
+</html>

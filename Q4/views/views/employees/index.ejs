@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <% include ../partials/head %>
+</head>
+<body>
+<% include ../partials/nav %>
+<main>
+  <h2>Employees</h2>
+  <p><a href="/employees/new">+ New Employee</a></p>
+  <table>
+    <thead>
+      <tr>
+        <th>Emp ID</th><th>Name</th><th>Email</th><th>Dept</th>
+        <th>Basic</th><th>Gross</th><th>Net</th><th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% employees.forEach(e => { %>
+        <tr>
+          <td><%= e.empId %></td>
+          <td><a href="/employees/<%= e._id %>"><%= e.name %></a></td>
+          <td><%= e.email %></td>
+          <td><%= e.department || '-' %></td>
+          <td><%= e.basic %></td>
+          <td><%= e.grossSalary %></td>
+          <td><%= e.netSalary %></td>
+          <td class="actions">
+            <a href="/employees/<%= e._id %>/edit">Edit</a>
+            <form action="/employees/<%= e._id %>?_method=DELETE" method="POST" style="display:inline">
+              <button type="submit" onclick="return confirm('Delete this employee?')">Delete</button>
+            </form>
+          </td>
+        </tr>
+      <% }) %>
+    </tbody>
+  </table>
+</main>
+</body>
+</html>

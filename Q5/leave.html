@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Leave Application</title>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+  <h2>Apply Leave</h2>
+  <input type="date" id="date">
+  <input type="text" id="reason" placeholder="Reason">
+  <button id="applyLeave">Apply</button>
+
+  <h2>Your Leaves</h2>
+  <ul id="leaveList"></ul>
+
+  <button id="logout">Logout</button>
+
+  <script>
+    const token = localStorage.getItem("token");
+    if (!token) window.location.href = "index.html";
+
+    function loadLeaves() {
+      $.ajax({
+        url: "http://localhost:5000/api/employee/leave",
+        headers: { "Authorization": "Bearer " + token },
+        success: function(data) {
+          $("#leaveList").html("");
+          data.forEach(l => {
+            $("#leaveList").append(`<li>${l.date} - ${l.reason} - Status: ${l.grant}</li>`);
+          });
+        }
+      });
+    }
+    loadLeaves();
+
+    $("#applyLeave").click(function() {
+      $.ajax({
+        url: "http://localhost:5000/api/employee/leave",
+        type: "POST",
+        contentType: "application/json",
+        data: JSON.stringify({
+          date: $("#date").val(),
+          reason: $("#reason").val()
+        }),
+        headers: { "Authorization": "Bearer " + token },
+        success: function() {
+          alert("Leave applied");
+          loadLeaves();
+        }
+      });
+    });
+
+    $("#logout").click(function() {
+      localStorage.removeItem("token");
+      window.location.href = "index.html";
+    });
+  </script>
+</body>
+</html>
