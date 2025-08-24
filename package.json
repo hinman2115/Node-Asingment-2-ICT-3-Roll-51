@@ -1,12 +1,18 @@
 {
-  "name": "node-asingment-2-ict-3-roll-51",
+  "name": "asingment-2-ict-3-roll-51",
   "version": "1.0.0",
-  "description": "",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "ejs": "^3.1.10",
+    "express": "^5.1.0",
+    "express-validator": "^7.2.1",
+    "multer": "^2.0.2"
+  }
 }

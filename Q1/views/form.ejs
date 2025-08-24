@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>User Registration</title>
+</head>
+<body>
+  <h2>Registration Form</h2>
+  <form action="/submit" method="POST" enctype="multipart/form-data">
+    <p>
+      Username: <input type="text" name="username" value="<%= old.username || '' %>">
+      <span style="color:red"><%= errors.username?.msg %></span>
+    </p>
+
+    <p>
+      Password: <input type="password" name="password">
+      <span style="color:red"><%= errors.password?.msg %></span>
+    </p>
+
+    <p>
+      Confirm Password: <input type="password" name="confirmPassword">
+      <span style="color:red"><%= errors.confirmPassword?.msg %></span>
+    </p>
+
+    <p>
+      Email: <input type="text" name="email" value="<%= old.email || '' %>">
+      <span style="color:red"><%= errors.email?.msg %></span>
+    </p>
+
+    <p>
+      Gender:
+      <input type="radio" name="gender" value="Male" <%= old.gender === 'Male' ? 'checked' : '' %>> Male
+      <input type="radio" name="gender" value="Female" <%= old.gender === 'Female' ? 'checked' : '' %>> Female
+      <span style="color:red"><%= errors.gender?.msg %></span>
+    </p>
+
+    <p>
+      Hobbies:
+      <input type="checkbox" name="hobbies" value="Reading" <%= old.hobbies?.includes("Reading") ? 'checked' : '' %>> Reading
+      <input type="checkbox" name="hobbies" value="Sports" <%= old.hobbies?.includes("Sports") ? 'checked' : '' %>> Sports
+      <input type="checkbox" name="hobbies" value="Music" <%= old.hobbies?.includes("Music") ? 'checked' : '' %>> Music
+      <span style="color:red"><%= errors.hobbies?.msg %></span>
+    </p>
+
+    <p>
+      Profile Picture: <input type="file" name="profilePic">
+    </p>
+
+    <p>
+      Other Pictures: <input type="file" name="otherPics" multiple>
+    </p>
+
+    <button type="submit">Submit</button>
+  </form>
+</body>
+</html>

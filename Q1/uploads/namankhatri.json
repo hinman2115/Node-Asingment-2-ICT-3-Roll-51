@@ -1,0 +1,12 @@
+{
+  "username": "namankhatri",
+  "email": "user@example.com",
+  "gender": "Male",
+  "hobbies": [
+    "Reading"
+  ],
+  "profilePic": "1756042112278-hinawall.png",
+  "otherPics": [
+    "1756042112296-Splashscreen.png"
+  ]
+}
